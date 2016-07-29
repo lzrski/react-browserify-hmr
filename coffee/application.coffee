@@ -2,23 +2,36 @@ React =
   require "react"
 h =
   require "react-hyperscript"
+{ connect } =
+  require "react-redux"
 
-class Application extends React.Component
-  constructor: (props, context) ->
-    super props, context
-    this.state =
-      n: 0
+Application = ({count, increment, decrement}) ->
+  h "div",
+    [
+      h "button",
+        onClick: increment,
+        "+"
 
-  increment: () => this.setState n: this.state.n + 1
+      h "button",
+        onClick: decrement,
+        "-"
 
-  decrement: () => this.setState n: this.state.n - 1
+      h "strong",
+        count
+    ]
 
-  render: () =>
-    h "div",
-      [
-        h "button", onClick: @increment, "+"
-        h "button", onClick: @decrement, "-"
-        h "strong", this.state.n
-      ]
 
-module.exports = Application
+ApplicationContainer = do (Application) ->
+  Props = ({ count }) ->
+    { count }
+
+  Dispatch = (dispatch) ->
+    increment: () -> dispatch type: "increment"
+    decrement: () -> dispatch type: "decrement"
+
+  Container =
+    connect Props, Dispatch
+
+  Container Application
+
+module.exports = ApplicationContainer
