@@ -4,7 +4,7 @@ h =
   require "react-hyperscript"
 
 Application =
-  require "./application"
+  require "./application-proxy"
 
 Store =
   require "./store"
