@@ -14,6 +14,8 @@ ConnectedCounter =
   require "./connected-counter"
 StatefulCounter =
   require "./stateful-counter"
+RTE =
+  require "./RTE"
 
 target =
   document.getElementById "app-container"
@@ -31,6 +33,12 @@ root =
         h ConnectedCounter
 
         h StatefulCounter
+
+        h RTE,
+          value:
+            store.getState().content
+          onChange: (content) ->
+            store.dispatch { type: "update content", content }
       ]
 
 render root, target
