@@ -4,6 +4,7 @@
   "description": "An experiment in using milankinen/livereactload",
   "main": "build/application.js",
   "scripts": {
+    "develop": "NODE_ENV=development watchify --debug --extension .coffee --transform coffeeify --transform babelify --transform loose-envify --transform uglifyify --plugin [livereactload --host localhost] --outfile build/application.js coffee/index.coffee",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tadeusz Łazurski <https://lazurski.pl/>",
@@ -26,8 +27,10 @@
     "coffeeify": "^2.0.1",
     "express": "^4.14.0",
     "livereactload": "^2.3.0-rc7",
+    "loose-envify": "^1.2.0",
     "nodemon": "^1.10.0",
     "react-proxy": "^1.1.8",
-    "redux-logger": "^2.6.1"
+    "redux-logger": "^2.6.1",
+    "uglifyify": "^3.0.2"
   }
 }

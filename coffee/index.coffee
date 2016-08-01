@@ -3,14 +3,17 @@
 h =
   require "react-hyperscript"
 
-Application =
-  require "./application-proxy"
-
+# Redux stuff
 Store =
   require "./store"
-
 { Provider } =
   require "react-redux"
+
+# React components
+ConnectedCounter =
+  require "./connected-counter"
+StatefulCounter =
+  require "./stateful-counter"
 
 target =
   document.getElementById "app-container"
@@ -18,13 +21,16 @@ target =
 store =
   Store
     log:
-      no
+      yes
 
 root =
   h Provider,
     { store }
-    [
-      h Application
-    ]
+    h "div",
+      [
+        h ConnectedCounter
+
+        h StatefulCounter
+      ]
 
 render root, target
