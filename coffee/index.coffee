@@ -30,6 +30,8 @@ root =
       [
         h ConnectedCounter
 
+        h "hr"
+
         h StatefulCounter
       ]
 
