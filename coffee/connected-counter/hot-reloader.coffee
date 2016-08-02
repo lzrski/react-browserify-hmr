@@ -12,7 +12,7 @@ React =
 h =
   require "react-hyperscript"
 Reloadable =
-  require "./counter" # <-- CHANGE HERE
+  require "./connected-counter" # <-- CHANGE HERE
 
 class HotReloader extends React.Component
   constructor: (props, context) ->
@@ -24,7 +24,7 @@ class HotReloader extends React.Component
     state =
       @reloadable.state
     Reloadable =
-      require "./counter" # <-- CHANGE HERE
+      require "./connected-counter" # <-- CHANGE HERE
     @forceUpdate () ->
       @reloadable.setState state
 

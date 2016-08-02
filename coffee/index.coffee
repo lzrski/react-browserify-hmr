@@ -32,13 +32,18 @@ root =
       [
         h ConnectedCounter
 
+        h "hr"
+
         h StatefulCounter
+
+        h "hr"
 
         h RTE,
           value:
             store.getState().content
           onChange: (content) ->
             store.dispatch { type: "update content", content }
+
       ]
 
 render root, target
