@@ -21,6 +21,8 @@ decorator =
   require "./decorator"
 Buttons =
   require "./buttons"
+Style =
+  require "./draft-style"
 
 # EditorState -> Maybe Entity
 getEntityAtCursor = (editorState) ->
@@ -59,8 +61,14 @@ getEntityAtCursor = (editorState) ->
 
 
 removeLink = (editorState, entity) ->
+  selection =
+    editorState.getSelection()
   # TODO: Implement removeLink function
   # SEE: https://github.com/facebook/draft-js/issues/182
+  # If selection is collapsed, remove link from entire entity range
+  console.log selection
+
+  # Otherwise remove it from selection range
 
 
 
@@ -106,14 +114,25 @@ class RichTextEditor extends React.Component
         @focus "editor"
 
       when "UNLINK"
-        range =
-          getEntityAtCursor editorState
+        selection =
+          editorState.getSelection()
 
-        return if not range?
 
-        @update RichUtils.toggleLink editorState,
-          range,
-          null
+
+        # @update RichUtils.toggleLink editorState,
+        #
+        #   null
+        # @focus "editor"
+
+        # @update removeLink editorState
+        # range =
+        #   getEntityAtCursor editorState
+        #
+        # return if not range?
+        #
+        # @update RichUtils.toggleLink editorState,
+        #   range,
+        #   null
 
   render: () ->
     { editorState } =
@@ -121,6 +140,8 @@ class RichTextEditor extends React.Component
 
     h "div",
       [
+        h Style
+
         h Buttons,
           dispatch:
             @dispatch
@@ -135,15 +156,6 @@ class RichTextEditor extends React.Component
             @state.url
 
         h "div.editor-pane",
-          style:
-            minHeight:
-              "10em"
-            width:
-              "100%"
-            border:
-              "solid 1px black"
-          onClick: () =>
-            @editor?.focus()
           [
             h Editor, {
               editorState
