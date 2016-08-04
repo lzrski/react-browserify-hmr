@@ -7,7 +7,7 @@ React =
 h =
   require "react-hyperscript"
 Reloadable =
-  require "./editor" # <-- CHANGE HERE
+  require "./connected-editor" # <-- CHANGE HERE
 
 class HotReloader extends React.Component
   constructor: (props, context) ->
@@ -20,7 +20,7 @@ class HotReloader extends React.Component
     state =
       @reloadable.state
     Reloadable =
-      require "./editor" # <-- CHANGE HERE
+      require "./connected-editor" # <-- CHANGE HERE
     @forceUpdate () ->
       console.log "reloading", state
       @reloadable.setState state
