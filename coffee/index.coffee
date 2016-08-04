@@ -14,8 +14,8 @@ ConnectedCounter =
   require "./connected-counter"
 StatefulCounter =
   require "./stateful-counter"
-RTE =
-  require "./RRTE"
+MCE =
+  require "./MCE"
 
 target =
   document.getElementById "app-container"
@@ -38,15 +38,7 @@ root =
 
         h "hr"
 
-        h RTE
-
-
-        # Homegrown RTE
-        # h RTE,
-        #   value:
-        #     store.getState().content
-        #   onChange: (content) ->
-        #     store.dispatch { type: "update content", content }
+        h MCE
 
       ]
 
