@@ -16,6 +16,8 @@ StatefulCounter =
   require "./stateful-counter"
 MCE =
   require "./MCE"
+FileReader =
+  require "./file-reader"
 
 target =
   document.getElementById "app-container"
@@ -30,16 +32,7 @@ root =
     { store }
     h "div",
       [
-        h ConnectedCounter
-
-        h "hr"
-
-        h StatefulCounter
-
-        h "hr"
-
-        h MCE
-
+        h FileReader
       ]
 
 render root, target

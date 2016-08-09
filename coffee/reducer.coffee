@@ -17,9 +17,16 @@ content = (state = "", action) ->
     else
       state
 
+file = (state = "", action) ->
+  switch action.type
+    when "update file"
+      action.data
+    else
+      state
 
 module.exports =
   combineReducers {
     count
     content
+    file
   }
