@@ -14,10 +14,12 @@ ConnectedCounter =
   require "./connected-counter"
 StatefulCounter =
   require "./stateful-counter"
-MCE =
-  require "./MCE"
-FileReader =
-  require "./file-reader"
+StatefulConnectedCounter =
+  require "./stateful-connected-counter"
+# MCE =
+#   require "./MCE"
+# FileReader =
+#   require "./file-reader"
 
 target =
   document.getElementById "app-container"
@@ -32,7 +34,11 @@ root =
     { store }
     h "div",
       [
-        h FileReader
+        h ConnectedCounter
+
+        h "hr"
+
+        h StatefulConnectedCounter
       ]
 
 render root, target
