@@ -4,7 +4,7 @@ h =
   require "react-hyperscript"
 
 # Stateless presentational component
-class StatefulThing extends React.Component
+class StatefulConnectedCounter extends React.Component
   constructor: (props, context) ->
     super props, context
     @state =
@@ -12,7 +12,7 @@ class StatefulThing extends React.Component
 
   componentDidMount: () ->
     tick = () =>
-      @setState age: @state.age - 1
+      @setState age: @state.age + @props.count
 
     @timer = setInterval tick, 1000
 
@@ -56,4 +56,4 @@ class StatefulThing extends React.Component
       ]
 
 module.exports =
-  StatefulThing
+  StatefulConnectedCounter

@@ -12,7 +12,7 @@ React =
 h =
   require "react-hyperscript"
 Reloadable =
-  require "./view" # <-- Look out!
+  require "./connected-view"
 
 class HotReloader extends React.Component
   constructor: (props, context) ->
@@ -24,13 +24,14 @@ class HotReloader extends React.Component
     state =
       @reloadable.state
     Reloadable =
-      require "./view" # <-- Look out!
+      require "./connected-view"
     @forceUpdate () ->
       @reloadable.setState state
 
     return true
 
   render: () =>
+    console.log Reloadable
     h Reloadable,
       Object.assign {},
         @props
