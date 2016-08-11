@@ -17,6 +17,14 @@ content = (state = "", action) ->
     else
       state
 
+draft = (state = "<p>Hell... o!</p>", action) ->
+  switch action.type
+    when "update draft"
+      action.content
+    else
+      state
+
+
 file = (state = "", action) ->
   switch action.type
     when "update file"
@@ -29,4 +37,5 @@ module.exports =
     count
     content
     file
+    draft
   }

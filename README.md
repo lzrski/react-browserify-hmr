@@ -52,6 +52,10 @@ Help is very much appreciated. Just open a PR to make me happy. Also open an iss
 
     Then you need to wrap it with a `HotReloader` component [like this one](./coffee/stateful-counter/hot-reloader.coffee). Unfortunatly a HotReloader must be implemented (i.e. copy and pasted with two lines altered) for every stateful component in your app. My guess is that it could be easily automated with a simple browserify transform.
 
+1.  `--no-dedupe` option is required for Browserify
+
+    There is a lot of components with exactly same contents and file names: `index`, `hot-reloader`, `connected-view` per every component. Without this option livereactload plugin seems to get confused and throws errors. This should be investigated further.
+
 
 ## Open questions
 

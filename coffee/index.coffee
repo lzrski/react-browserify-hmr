@@ -11,15 +11,17 @@ Store =
 
 # React components
 ConnectedCounter =
-  require "./connected-counter"
+  require "./components/connected-counter"
 StatefulCounter =
-  require "./stateful-counter"
+  require "./components/stateful-counter"
 StatefulConnectedCounter =
-  require "./stateful-connected-counter"
-# MCE =
-#   require "./MCE"
-# FileReader =
-#   require "./file-reader"
+  require "./components/stateful-connected-counter"
+MCE =
+  require "./components/MCE"
+RTE =
+  require "./components/RTE"
+FileReader =
+  require "./components/file-reader"
 
 target =
   document.getElementById "app-container"
@@ -34,11 +36,17 @@ root =
     { store }
     h "div",
       [
-        h ConnectedCounter
-
+        h StatefulCounter
         h "hr"
-
+        h ConnectedCounter
+        h "hr"
         h StatefulConnectedCounter
+        h "hr"
+        h FileReader
+        h "hr"
+        h MCE
+        h "hr"
+        h RTE
       ]
 
 render root, target
